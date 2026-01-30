@@ -1,0 +1,123 @@
+
+body {
+  margin: 0;
+  height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(135deg, #FBC2EB, #D8BFD8);
+  position: relative;
+  overflow-x: hidden; 
+  overflow-y: auto;  
+}
+
+/* Clouds */
+.cloud {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #F8C8DC 0%, #FFFFFF 70%, transparent 100%);
+  opacity: 0.6;
+  animation: float 60s linear infinite;
+}
+.cloud1 { width: 300px; height: 150px; top: 20%; left: -20%; animation-delay: 0s; }
+.cloud2 { width: 250px; height: 120px; top: 40%; left: -25%; animation-delay: 7s; }
+.cloud3 { width: 200px; height: 100px; top: 60%; left: -15%; animation-delay: 2s; }
+
+@keyframes float {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(120vw); }
+}
+
+
+#btn {
+  margin-top: 10px;
+  margin-left: 20px;
+  background: #EFB0BC;          
+  color: #fff;                   
+  border-radius: 8px;             
+  padding: 10px 18px;            
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  position: absolute;
+  z-index: 800; 
+}
+
+
+#btnTwo {
+  background: #EFB0BC;          
+  color: #fff;                   
+  border-radius: 8px;             
+  padding: 10px 18px;            
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  opacity: 0; 
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 700;
+}
+
+
+#img {
+  position: fixed;
+  bottom: -300px; 
+  right: -300px; 
+  width: 235px;
+  height: 235px;
+  border-radius: 50%;
+  transform: translate(0, 0);
+  transition: transform 2s ease-in-out, bottom 2s ease-in-out, right 2s ease-in-out;
+  z-index: 500;
+}
+
+
+#birthdayText {
+  position: fixed;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 48px;
+  font-weight: 600;
+  color: white;
+  opacity: 0;
+  transition: top 2s ease-in-out, opacity 1s;
+  z-index: 600;
+  white-space: nowrap;
+}
+
+
+.text {
+  display: flex;
+  justify-content: space-between; 
+  margin-top: 120vh; 
+  padding: 2rem;
+  background: linear-gradient(to right, #cb87d7, #d25fe7); 
+  color: black;
+  font-size: 1.1rem;
+  border-radius: 15px;
+  gap: 2rem;
+}
+.first{
+  background-color: #f755c4;
+}
+.second{
+  background-color: #ed4be0;
+}
+.text .first, .text .second {
+  flex: 1;
+}
+#btnThree {
+  position: relative;
+  z-index: 800; 
+  display: block;
+  margin: 2rem auto; 
+  padding: 10px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: #EFB0BC;
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  cursor: pointer;
+}

@@ -1,0 +1,192 @@
+/* 
+   GLOBAL
+ */
+body {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at top,
+    #FFF1F3,
+    #F3C3CB,
+    #DFA1AD
+  );
+}
+
+/*
+   COUNTDOWN
+ */
+#countdown {
+  position: absolute;
+  top: 2%;
+  right: 3%;
+  font-size: 1.7rem;
+  letter-spacing: 2px;
+  color: #6E4851;
+  z-index: 10;
+}
+
+/* 
+   CONTAINER
+*/
+#container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* 
+   MAIN BALL
+*/
+#mainBall {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: #f75bd5;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: bounceSteps 6s ease-out forwards;
+}
+
+/* 
+   BALL BOUNCE
+ */
+@keyframes bounceSteps {
+  0%   { bottom: 100%; left: 0%; }
+  20%  { bottom: 0%; left: 20%; }
+  30%  { bottom: 75%; left: 20%; }
+  50%  { bottom: 0%; left: 40%; }
+  60%  { bottom: 50%; left: 40%; }
+  80%  { bottom: 0%; left: 60%; }
+  90%  { bottom: 25%; left: 60%; }
+  100% { bottom: 0%; left: 90%; }
+}
+
+/* 
+   BALL BREAK
+*/
+@keyframes breakBall {
+  0%   { transform: scale(1); opacity: 1; }
+  50%  { transform: scale(1.2); opacity: 0.6; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+/* 
+   FALLING BALLS
+ */
+.falling-ball {
+  position: absolute;
+  top: -20px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #f9a4bf;
+  opacity: 0.85;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+  }
+}
+
+/* 
+   EXPLOSION PIECES
+ */
+.piece {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #eca7d8;
+  pointer-events: none;
+}
+
+/* 
+   TEXT
+ */
+#text {
+  position: absolute;
+  font-family: 'Great Vibes', cursive;
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3.3rem;
+  color: #6E4851;
+  letter-spacing: 5px;
+  z-index: 5;
+  text-align: center;
+}
+
+/*
+   BORDER BALLS (DOUBLE)
+*/
+.text-border-ball {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #EFB0BC;
+  pointer-events: none;
+}
+
+.text-border-ball.outer {
+  width: 9px;
+  height: 9px;
+  background: #f1496d;
+}
+
+/* Button container above text */
+.btnbox {
+  position: absolute;
+  top: -70px;          /* above the text */
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;       /* shown via JS after typing */
+  gap: 14px;
+  z-index: 6;
+}
+
+/*  JS BUTTONS AT BOTTOM  */
+#choiceButtons {
+  background: #EFB0BC;           /* Button background */
+  color: #fff;                    /* Text color */
+  border-radius: 8px;             /* Rounded corners */
+  padding: 10px 18px;             /* Padding */
+  display: flex;
+  gap: 15px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#choiceButtons button {
+  background: #EFB0BC;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+#choiceButtons button:hover {
+  background: #ff85aa;
+  transform: translateY(-2px) scale(1.05);
+}
+
+.btnOne{
+  background: #EFB0BC;          
+  color: #fff;                   
+  border-radius: 8px;             
+  padding: 10px 18px;            
+  display: flex;
+  gap: 15px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}

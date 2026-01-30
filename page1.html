@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Exploding Cube with Inner Image Core</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at top, #f7c1dc, #c3b6f2, #e76fc9);
+
+      background-blend-mode: screen;
+      overflow: hidden;
+      perspective: 1200px;
+      font-family: system-ui, sans-serif;
+      color: white;
+    }
+
+    /* ===== Title ===== */
+    h1 {
+      margin-bottom: 105px;
+      margin-right: 55px;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+
+    /* ===== Scene ===== */
+    .scene {
+      position: relative;
+      width: 260px;
+      height: 260px;
+    }
+
+    /* ===== Outer Cube ===== */
+    .cube {
+      position: absolute;
+      inset: 0;
+      transform-style: preserve-3d;
+      animation: rotateCube 14s linear infinite;
+      transition: transform .8s ease;
+    }
+
+    .scene:hover .cube {
+      animation-play-state: paused;
+      transform: rotateX(20deg) rotateY(-25deg);
+    }
+
+    /* Faces */
+    .face {
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 35px rgba(0, 0, 0, .6);
+      transition: transform .8s ease, opacity .6s ease;
+    }
+
+    .face img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(.85);
+    }
+
+    /* Initial positions */
+    .front {
+      transform: translateZ(120px);
+    }
+
+    .back {
+      transform: rotateY(180deg) translateZ(120px);
+    }
+
+    .right {
+      transform: rotateY(90deg) translateZ(120px);
+    }
+
+    .left {
+      transform: rotateY(-90deg) translateZ(120px);
+    }
+
+    .top {
+      transform: rotateX(90deg) translateZ(120px);
+    }
+
+    .bottom {
+      transform: rotateX(-90deg) translateZ(120px);
+    }
+
+    /* Explode */
+    .scene:hover .front {
+      transform: translateZ(200px);
+      opacity: .25;
+    }
+
+    .scene:hover .back {
+      transform: rotateY(180deg) translateZ(200px);
+      opacity: .25;
+    }
+
+    .scene:hover .right {
+      transform: rotateY(90deg) translateZ(200px);
+      opacity: .25;
+    }
+
+    .scene:hover .left {
+      transform: rotateY(-90deg) translateZ(200px);
+      opacity: .25;
+    }
+
+    .scene:hover .top {
+      transform: rotateX(90deg) translateZ(200px);
+      opacity: .25;
+    }
+
+    .scene:hover .bottom {
+      transform: rotateX(-90deg) translateZ(200px);
+      opacity: .25;
+    }
+
+    /* ===== Inner Cube ===== */
+    .inner-cube {
+      position: absolute;
+      inset: 60px;
+      transform-style: preserve-3d;
+      opacity: 0;
+      transform: scale(.4);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    /* Reveal inner cube */
+    .scene:hover .inner-cube {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Inner faces (FLAT / STRAIGHT) */
+    .inner-face {
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(79, 124, 255, .5);
+    }
+
+    .inner-face img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      backface-visibility: hidden;
+    }
+
+    /* RIGHT & LEFT faces */
+    .inner-right img,
+    .inner-left img {
+      transform: rotateY(180deg);
+    }
+
+    /* TOP & BOTTOM faces */
+    .inner-top img {
+      transform: rotateX(180deg);
+    }
+
+    .inner-bottom img {
+      transform: rotateX(180deg);
+    }
+
+
+    /* Only one visible face at a time (front-facing images) */
+    .inner-front {
+      transform: translateZ(40px);
+    }
+
+    .inner-back {
+      transform: rotateY(180deg) translateZ(40px);
+    }
+
+    .inner-right {
+      transform: rotateY(90deg) translateZ(40px);
+    }
+
+    .inner-left {
+      transform: rotateY(-90deg) translateZ(40px);
+    }
+
+    .inner-top {
+      transform: rotateX(90deg) translateZ(40px);
+    }
+
+    .inner-bottom {
+      transform: rotateX(-90deg) translateZ(40px);
+    }
+
+    /* ===== Rotation ===== */
+    @keyframes rotateCube {
+      0% {
+        transform: rotateX(0deg) rotateY(0deg);
+      }
+
+      100% {
+        transform: rotateX(360deg) rotateY(360deg);
+      }
+    }
+
+    #aastha {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      border: none;
+      background: #ff85aa;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 20rem;
+      margin-left: 35rem;
+    }
+
+    #aastha:hover {
+      background: #f1496d;
+      transform: scale(1.05);
+    }
+    
+  </style>
+</head>
+
+<body>
+  <h2 id="oo">hover your coursor over the cube and then after , remove it and ten click btn...</h2>
+  <h1>I am glad that you came into the world<br>
+    and i am even more glad that you came into my world..</h1>
+
+  <div class="scene">
+
+    <!-- OUTER CUBE -->
+    <div class="cube">
+      <div class="face front"><img src="images/a2.jpeg"></div>
+      <div class="face back"><img src="images/a4.jpeg"></div>
+      <div class="face right"><img src="images/birthday.jpeg"></div>
+      <div class="face left"><img src="images/a3.jpeg"></div>
+      <div class="face top"><img src="images/a2.jpeg"></div>
+      <div class="face bottom"><img src="images/a4.jpeg"></div>
+    </div>
+
+    <!-- INNER CLEAN IMAGE CUBE -->
+    <div class="inner-cube">
+      <div class="inner-face inner-front"><img src="images/a2.jpeg"></div>
+      <div class="inner-face inner-back"><img src="images/a2.jpeg"></div>
+      <div class="inner-face inner-right"><img src="images/a2.jpeg"></div>
+      <div class="inner-face inner-left"><img src="images/a2.jpeg"></div>
+      <div class="inner-face inner-top"><img src="images/a2.jpeg"></div>
+      <div class="inner-face inner-bottom"><img src="images/a2.jpeg"></div>
+    </div>
+    <button id="aastha" onclick="window.location.href='page2.html'">Tap</button>
+ 
+  </div>
+
+<audio id="audio" src="songs/Tera Hone Laga Hu - Atif Aslam  Electric Guitar Cover.mp3"></audio>
+<audio src="songs/mere dil 2.mp3" id="om"></audio>
+
+  <!-- 🔊 AUDIO SCRIPT -->
+  <script>
+    const scene = document.querySelector(".scene");
+    const audio = document.getElementById("audio");
+    const om = document.getElementById("om");
+    // Unlock audio on first click (browser requirement)
+    document.body.addEventListener("click", () => {
+      audio.play().then(() => audio.pause());
+    }, { once: true });
+
+    scene.addEventListener("mouseenter", () => {
+      audio.currentTime = 0;
+      audio.play().catch(() => {});
+    });
+
+    scene.addEventListener("mouseleave", () => { 
+      audio.pause();
+      om.play();
+    });
+  </script>
+</body>
+
+</html>

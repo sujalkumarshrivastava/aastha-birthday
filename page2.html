@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music and Messages</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #ffe4e1;
+            text-align: center;
+        }
+
+        #messages {
+            display: flex;
+            flex-wrap: wrap;
+            width: 95%;
+            justify-content: center;
+        }
+
+        .message {
+            background-color: #e659b9;
+            display: none;
+            font-size: 1rem;
+            width: 45%;
+            height: 12rem;
+            margin: 10px;
+            color: #fff;
+            border-radius: 15px;
+            padding: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message::before {
+            content: "♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥";
+            position: absolute;
+            top: 2px;
+            left: -40px;
+            font-size: 2rem;
+            color: darkred;
+            opacity: 0.3;
+            transform: rotate(-15deg);
+        }
+
+        .message::after {
+            content: "♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥";
+            position: absolute;
+            bottom: -10px;
+            right: -40px;
+            font-size: 2rem;
+            color: darkred;
+            opacity: 0.3;
+            transform: rotate(20deg);
+        }
+
+        .msg1 {
+            align-self: flex-start;
+            height: 20rem;
+        }
+
+        .msg2 {
+            align-self: flex-end;
+            top: 2rem;
+            left: 1rem;
+        }
+
+        .msg3 {
+            align-self: center;
+            top: 10rem;
+            height: 19rem;
+            text-align: left;
+        }
+
+        #msgTxt {
+            margin-left: 1.5rem;
+        }
+
+        .msg4 {
+            align-self: stretch;
+            top: 5rem;
+            left: 2;
+        }
+
+        #playBtn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            border: none;
+            background: #ff85aa;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        #playBtn:hover {
+            background: #f1496d;
+            transform: scale(1.05);
+        }
+
+        h1 {
+            color: #d6336c;
+        }
+
+        .second {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            border: none;
+            background: #ff85aa;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 35vh;
+        }
+
+        .second:hover {
+            background-color: #d6336c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>A Message for You 🎵</h1>
+    <button id="playBtn">Click Here...!</button>
+
+    <div id="messages">
+
+        <div class="message msg1">
+            <h3>
+                Every evening she gently arranges her hair,<br>
+                As if she hands light over to the dark night.<br><br>
+
+                That tiny bindi on her forehead,<br>
+                Reminds the sky of its worth every day.<br><br>
+
+                When she smiles, time seems to pause,<br>
+                And even when she doesn’t, everything feels special.<br><br>
+
+                Some people are beautiful,<br>
+                But because of her, beauty itself is born in this world.
+            </h3>
+        </div>
+
+        <div class="message msg3">
+            <h3 id="msgTxt">
+                Do you know what I love?<br>
+                Sweet raindrops falling gently,<br>
+                The enchanting call of ocean waves,<br>
+                The fragrance of flowers, moonlit nights,<br>
+                Every little moment spent with you.<br><br>
+
+                Good poetry touches the heart deeply,<br>
+                But your name is my favorite verse.<br>
+                All the beauty of the world on one side,<br>
+                And the first word of my poem—“You”—on the other.
+            </h3>
+        </div>
+
+        <div class="message msg4">
+            <h3>
+                Whenever I look at the moon, I feel:-<br><br>
+                This moon that has climbed so high in the sky,<br>
+                Must have risen only to look at you.
+            </h3>
+        </div>
+
+        <div class="message msg3">
+            <h3>
+                That’s how I see beauty:-
+                The world has many beautiful things,
+                but she isn’t one of them—
+                she’s the reason
+                we notice beauty at all.
+                <br><br>
+                and,i used to think while writing my dairy:-<br>
+                <br>
+                She exists,
+                and the world feels
+                better written.
+            </h3>
+        </div>
+
+    </div>
+
+    <div class="mainpage">
+        <button class="second" onclick="window.location.href='you.html'">Click!</button>
+    </div>
+
+    <audio id="audio" src="songs/Mitwa  Cover  Geet yadav.mp3"></audio>
+
+    <script>
+        const playBtn = document.getElementById("playBtn");
+        const messages = document.querySelectorAll(".message");
+        const audio = document.getElementById("audio");
+
+        playBtn.addEventListener("click", () => {
+            messages.forEach(msg => {
+                msg.style.display = "block";
+            });
+
+            audio.currentTime = 0;
+            audio.play().catch(err => console.log("Audio blocked:", err));
+            playBtn.style.display = "none";
+        });
+    </script>
+
+</body>
+
+</html>
+

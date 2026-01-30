@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Most Beautiful Day ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Sriracha&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--pink:#FF7882;
+--black:#333;
+--white:#fff;
+}
+body{
+height:100vh;
+background:#feecea;
+overflow:hidden;
+font-family:"Sriracha",cursive;
+}
+#wrapper{height:100%;position:relative}
+
+/* FLOATING HEARTS */
+.heart{
+position:fixed;
+bottom:-20px;
+color:var(--pink);
+font-size:18px;
+animation:float 8s linear infinite;
+opacity:.7;
+}
+@keyframes float{
+0%{transform:translateY(0) scale(1);opacity:.8}
+100%{transform:translateY(-120vh) scale(1.4);opacity:0}
+}
+
+/* TITLE */
+.title{text-align:center;margin-top:40px;font-family:"Titan One",sans-serif}
+.title h1{display:flex;justify-content:center;gap:5px;font-size:3.2rem}
+.title span{opacity:0;animation:drop .5s forwards}
+@keyframes drop{
+from{transform:translateY(40px);opacity:0}
+to{transform:translateY(0);opacity:1}
+}
+.birthday{color:var(--pink)}
+.person span{font-size:4rem}
+
+/* BUTTON */
+.btn{margin-top:30px;display:flex;justify-content:center}
+#btn__letter{
+padding:8px 20px;
+border-radius:40px;
+border:3px solid var(--black);
+background:var(--pink);
+cursor:pointer;
+font-size:1rem;
+}
+
+/* IMAGE */
+.box__account{
+margin-top:40px;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+.image{
+width:260px;height:260px;
+border-radius:50%;
+overflow:hidden;
+border:6px solid var(--black);
+}
+.image img{width:100%}
+.name{
+margin-top:15px;
+background:var(--pink);
+padding:6px 20px;
+border-radius:30px;
+border:3px solid var(--black);
+font-family:"Dancing Script",cursive;
+font-size:1.6rem;
+display:flex;
+gap:10px;
+align-items:center;
+}
+
+/* MAIL POPUP */
+.boxMail{
+position:fixed;
+top:0;left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.8);
+display:flex;
+justify-content:center;
+align-items:center;
+opacity:0;
+visibility:hidden;
+transition:.4s;
+z-index:1000;
+}
+.boxMail.active{opacity:1;visibility:visible}
+
+.boxMail-container{
+width:720px;height:480px;
+display:flex;
+border-radius:20px;
+overflow:hidden;
+}
+.card1{
+width:50%;
+background:var(--pink);
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-family:"Dancing Script",cursive;
+font-size:2rem;
+}
+.card2{
+width:50%;
+background:#fff;
+padding:25px;
+font-family:"Dancing Script",cursive;
+font-size:1.05rem;
+line-height:1.7;
+overflow-y:auto;
+}
+
+.card2 h3{
+text-align:center;
+margin-bottom:10px;
+color:var(--pink);
+}
+
+.fa-xmark{
+position:fixed;
+top:20px;right:30px;
+font-size:30px;
+color:#fff;
+cursor:pointer;
+}
+
+/* TYPE CURSOR */
+.cursor{
+display:inline-block;
+width:3px;
+height:18px;
+background:#000;
+margin-left:3px;
+animation:blink 1s infinite;
+}
+@keyframes blink{
+0%,50%,100%{opacity:1}
+25%,75%{opacity:0}
+}
+
+/* DOTS */
+.dots{
+font-size:24px;
+letter-spacing:4px;
+animation:dots 1.5s infinite;
+}
+
+@media(max-width:768px){
+.title h1{font-size:2rem}
+.person span{font-size:2.5rem}
+.boxMail-container{width:90%;height:420px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="bgAudio" preload="auto">
+  <source src="songs/mmm.mp3" type="audio/mpeg">
+</audio>
+
+<!-- FLOATING HEARTS -->
+<script>
+setInterval(()=>{
+const heart=document.createElement("i");
+heart.className="fa-solid fa-heart heart";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=Math.random()*20+10+"px";
+heart.style.animationDuration=Math.random()*5+5+"s";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),10000);
+},500);
+</script>
+
+<div id="wrapper">
+
+<div class="title">
+<h1><span>H</span><span>a</span><span>p</span><span>p</span><span>y</span></h1>
+<h1 class="birthday">
+<span>B</span><span>i</span><span>r</span><span>t</span><span>h</span><span>d</span><span>a</span><span>y</span>
+</h1>
+<h1 class="person">
+<span>A</span><span>a</span><span>s</span><span>t</span><span>h</span><span>a</span>
+</h1>
+</div>
+
+<div class="btn">
+<button id="btn__letter">
+Click Here <i class="fa-regular fa-envelope"></i>
+</button>
+</div>
+
+<div class="box__account">
+<div class="image">
+<img src="images/a2.jpeg">
+</div>
+<div class="name">
+<i class="fa-solid fa-heart"></i>
+<span>Happy Birthday Aastha.... ❤️</span>
+<i class="fa-solid fa-heart"></i>
+</div>
+</div>
+
+<!-- MAIL -->
+<div class="boxMail">
+<i class="fa-solid fa-xmark"></i>
+<div class="boxMail-container">
+<div class="card1">To Aastha 💖</div>
+<div class="card2">
+<h3>Happy Birthday</h3>
+<p id="typeText"></p><span class="cursor"></span>
+<div class="dots">...</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+const btn = document.getElementById("btn__letter");
+const boxMail = document.querySelector(".boxMail");
+const close = document.querySelector(".fa-xmark");
+const audio = document.getElementById("bgAudio");
+
+const text = `I know I may not be someone you feel the same way about,
+and I respect that completely.
+
+Still, today is special.
+
+You are someone I genuinely admire —
+for your grace, your warmth,
+and the quiet strength you carry within you.
+
+This message isn’t meant to change anything,
+nor to ask for something that isn’t meant to be.
+It’s simply a heartfelt wish
+that life treats you kindly,
+that your dreams unfold beautifully,
+and that you always find reasons to smile.
+
+Happy Birthday, Aastha.
+From someone who cared,
+and always wishes you well.`;
+
+let index = 0;
+const speed = 40;
+const output = document.getElementById("typeText");
+
+btn.onclick = () => {
+  boxMail.classList.add("active");
+  output.textContent = "";
+  index = 0;
+
+  audio.currentTime = 0;
+  audio.play();
+
+  typeWriter();
+};
+
+close.onclick = () => {
+  boxMail.classList.remove("active");
+  audio.pause();
+};
+
+function typeWriter(){
+  if(index < text.length){
+    output.textContent += text.charAt(index);
+    index++;
+    setTimeout(typeWriter, speed);
+  }
+}
+</script>
+
+</body>
+</html>

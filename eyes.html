@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Eyes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Georgia, serif;
+}
+
+body{
+  background:black;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* ================= VIDEO SECTION ================= */
+.video-section{
+  height:100vh;
+  position:relative;
+}
+
+video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* BUTTON */
+#scrollBtn{
+  position:absolute;
+  bottom:40px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:14px 30px;
+  background: #ff85aa;
+      color: #fff;
+  border:1px solid white;
+  border-radius: 2rem;
+  cursor:pointer;
+  font-size:16px;
+}
+
+/* ================= TEXT SECTION ================= */
+.text-section{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:radial-gradient(circle,#111,#000);
+}
+
+.text-box{
+  max-width:650px;
+  text-align:center;
+  font-size:26px;
+  line-height:1.6;
+  transition:opacity 1s ease;
+}
+#bbtt{
+  padding: 15px 30px;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      border: none;
+      background: #ff85aa;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 20rem;
+      margin-left: 35rem;
+}
+#bbtt:hover{
+  background: #f1496d;
+      transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<section class="video-section">
+  <video id="vidOne"
+    src="videos/aast.mp4"
+    autoplay
+    loop
+    playsinline>
+  </video>
+
+  <button id="scrollBtn">↓ Continue</button>
+</section>
+
+
+<section class="text-section" id="textSection">
+  <div class="text-box" id="messageBox">
+    har 10 sec me text change hoga please wait..
+  </div>
+  <button id="bbtt" onclick="window.location.href='moon.html'">next</button>
+</section>
+
+<audio src="songs/Rang Jo Lagyo.mp3" id="dc"></audio>
+
+<script>
+const video = document.getElementById("vidOne");
+const btn = document.getElementById("scrollBtn");
+const textSection = document.getElementById("textSection");
+const messageBox = document.getElementById("messageBox");
+
+const dblclk = document.getElementById("dc");
+
+
+
+btn.addEventListener("click", () => {
+  
+  window.scrollBy({
+    top: 900,        
+    behavior: "smooth"
+  });
+
+  
+  video.pause();
+
+
+  dblclk.play().catch(() => {});
+});
+
+const messages = [
+  "har 10 sec me text change hoga please wait..",
+  "even if you are not mine,I cannot promise you I’ll never cry in my presence, but I swear I’ll try until my last breath to make you smile before your tears are dry ",
+  "She didn’t look at me — and somehow, that changed everything.",
+  "I may not read your eyes, but I can sketch their silence, I may not see your soul, but I can surrender mine just to see you smile. ",
+  "Even in rejection, my heart bows with gratitude, for loving you was itself a gift.",
+  "I don’t ask to you to be mine, I only wish you see—my love is free, it asks for nothing but your smile.",
+  "i know you are not mine,but all i want you to know that i am yours...",
+  "i am bad at words ,and i know you are good at reading,..i wish if you could read my silence....",
+  "thank you for understanding every thing...."
+];
+
+let i = 0;
+
+
+setInterval(() => {
+  i = (i + 1) % messages.length;
+  messageBox.style.opacity = 0;
+
+  setTimeout(() => {
+    messageBox.innerText = messages[i];
+    messageBox.style.opacity = 1;
+  }, 1000); 
+}, 10000); 
+
+</script>
+
+</body>
+</html>
